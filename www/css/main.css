@@ -1,74 +1,186 @@
-@charset "UTF-8";
 @import url("//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css");
-/*------------------------------------*\
-    #PAGE
-\*------------------------------------*/
-/**
- * High-, page-level styling.
- *
- * 1. Set the default `font-size` and `line-height` for the entire project,
- *    sourced from our default variables. The `font-size` is calculated to exist
- *    in ems, the `line-height` is calculated to exist unitlessly.
- * 2. Force scrollbars to always be visible to prevent awkward ‘jumps’ when
- *    navigating between pages that do/do not have enough content to produce
- *    scrollbars naturally.
- * 3. Ensure the page always fills at least the entire height of the viewport.
- * 4. Prevent certain mobile browsers from automatically zooming fonts.
- * 5. Fonts on OSX will look more consistent with other systems that do not
- *    render text using sub-pixel anti-aliasing.
- */
-html {
-  font-size: 1em;
-  /* [1] */
-  line-height: 1.5;
-  /* [1] */
-  background-color: white;
-  color: #333333;
-  overflow-y: scroll;
-  /* [2] */
-  min-height: 100%;
-  /* [3] */
-  -webkit-text-size-adjust: 100%;
-  /* [4] */
-  -ms-text-size-adjust: 100%;
-  /* [4] */
-  -moz-osx-font-smoothing: grayscale;
-  /* [5] */
-  -webkit-font-smoothing: antialiased;
-  /* [5] */
+* {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-*, *:before, *:after {
-  -webkit-box-sizing: inherit;
-  -moz-box-sizing: inherit;
-  box-sizing: inherit; }
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
 
-.wrapper {
-  width: 90%;
-  margin: 0 5%; }
+html {
+  font-size: 10px;
+  -webkit-tap-highlight-color: transparent; }
 
-.header-container {
-  border-bottom: 20px solid #e44d26; }
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857;
+  color: #333333;
+  background-color: white; }
 
-.footer-container,
-.main aside {
-  border-top: 20px solid #e44d26; }
+a {
+  color: #428bca;
+  text-decoration: none; }
+  a:hover, a:focus {
+    color: #2a6496;
+    text-decoration: underline; }
+  a:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px; }
 
-.header-container,
-.footer-container,
-.main aside {
-  background: #f16529; }
+figure {
+  margin: 0; }
+
+img {
+  vertical-align: middle; }
+
+.img-responsive {
+  display: block;
+  width: 100% \9;
+  max-width: 100%;
+  height: auto; }
+
+.container {
+  margin-right: auto;
+  margin-left: auto; }
+  @media (min-width: 768px) {
+    .container {
+      width: 768px; } }
+  @media (min-width: 992px) {
+    .container {
+      width: 992px; } }
+  @media (min-width: 1200px) {
+    .container {
+      width: 1200px; } }
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit; }
+
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  margin-top: 20px;
+  margin-bottom: 10px; }
+
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-top: 10px;
+  margin-bottom: 10px; }
+
+h1, .h1 {
+  font-size: 36px; }
+
+h2, .h2 {
+  font-size: 30px; }
+
+h3, .h3 {
+  font-size: 24px; }
+
+h4, .h4 {
+  font-size: 18px; }
+
+h5, .h5 {
+  font-size: 14px; }
+
+h6, .h6 {
+  font-size: 12px; }
+
+p {
+  margin: 0 0 10px; }
+
+.text-left {
+  text-align: left; }
+
+.text-right {
+  text-align: right; }
+
+.text-center {
+  text-align: center; }
+
+.text-justify {
+  text-align: justify; }
+
+.text-nowrap {
+  white-space: nowrap; }
+
+.text-lowercase {
+  text-transform: lowercase; }
+
+.text-uppercase {
+  text-transform: uppercase; }
+
+.text-capitalize {
+  text-transform: capitalize; }
+
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table; }
+.clearfix:after {
+  clear: both; }
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+.pull-right {
+  float: right !important; }
+
+.pull-left {
+  float: left !important; }
+
+.hide {
+  display: none !important; }
+
+.show {
+  display: block !important; }
+
+.invisible {
+  visibility: hidden; }
+
+.text-hide {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0; }
+
+.hidden {
+  display: none !important;
+  visibility: hidden !important; }
+
+.affix {
+  position: fixed;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+
+.dangerbtn {
+  border: 1px solid red; }
+
+.dangerbtn {
+  color: red;
+  /*  &:active,
+    &.active {
+  
+    }*/ }
 
 .title {
-  color: white; }
+  color: black; }
 
-nav ul {
+.nav ul {
   margin: 0;
   padding: 0; }
 
-nav a {
+.nav a {
   display: block;
   margin-bottom: 10px;
   padding: 15px 0;
@@ -78,52 +190,48 @@ nav a {
   color: white;
   background: #e44d26; }
 
-nav a:hover,
-nav a:visited {
+.nav a:hover,
+.nav a:visited {
   color: white; }
 
-nav a:hover {
+.nav a:hover {
   text-decoration: underline; }
 
 .main {
   padding: 30px 0; }
 
-.main article h1 {
+.main-h1 {
   font-size: 2em; }
 
-.main aside {
+.right-main {
+  background: #f16529;
   color: white;
   padding: 0px 5% 10px; }
-
-.footer-container footer {
-  color: white;
-  padding: 20px 0; }
 
 .ie7 .title {
   padding-top: 20px; }
 
 @media only screen and (min-width: 480px) {
-  nav a {
+  .nav a {
     float: left;
     width: 27%;
     margin: 0 1.7%;
     padding: 25px 2%;
     margin-bottom: 0; }
 
-  nav li:first-child a {
+  .firstNav {
     margin-left: 0; }
 
-  nav li:last-child a {
+  .lastNav {
     margin-right: 0; }
 
-  nav ul li {
+  .nav li {
     display: inline; }
 
-  .oldie nav a {
+  .oldie .nav a {
     margin: 0 0.7%; } }
 @media only screen and (min-width: 768px) {
-  .header-container,
-  .main aside {
+  .right-main {
     -webkit-box-shadow: 0 5px 10px #aaa;
     -moz-box-shadow: 0 5px 10px #aaa;
     box-shadow: 0 5px 10px #aaa; }
@@ -131,35 +239,19 @@ nav a:hover {
   .title {
     float: left; }
 
-  nav {
+  .nav {
     float: right;
     width: 38%; }
 
-  .main article {
+  .left-main {
     float: left;
     width: 57%; }
 
-  .main aside {
+  .right-main {
     float: right;
     width: 28%; } }
-@media only screen and (min-width: 1140px) {
-  .wrapper {
+@media only screen and (min-width: 992px) {
+  .container {
     width: 1026px;
     /* 1140px - 10% for margins */
     margin: 0 auto; } }
-.clearfix:before,
-.clearfix:after {
-  content: " ";
-  display: table; }
-
-.clearfix:after {
-  clear: both; }
-
-.clearfix {
-  *zoom: 1; }
-
-.dangerbtn {
-  border: 1px solid red; }
-
-.dangerbtn {
-  color: red; }

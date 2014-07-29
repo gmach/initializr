@@ -9,4 +9,9 @@
 .dangerbtn {
   @extend %button;
   color: red;
+/*  &:active,
+  &.active {
+
+  }*/
 }
+
