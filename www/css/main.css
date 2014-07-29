@@ -27,10 +27,6 @@ a {
   a:hover, a:focus {
     color: #2a6496;
     text-decoration: underline; }
-  a:focus {
-    outline: thin dotted;
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px; }
 
 figure {
   margin: 0; }
@@ -147,21 +143,9 @@ p {
 .invisible {
   visibility: hidden; }
 
-.text-hide {
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0; }
-
 .hidden {
   display: none !important;
   visibility: hidden !important; }
-
-.affix {
-  position: fixed;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0); }
 
 .dangerbtn {
   border: 1px solid red; }

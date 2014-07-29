@@ -33,10 +33,6 @@
 .invisible {
   visibility: hidden;
 }
-.text-hide {
-  @include text-hide();
-}
-
 
 // Hide from screenreaders and browsers
 //
@@ -47,11 +43,3 @@
   visibility: hidden !important;
 }
 
-
-// For Affix plugin
-// -------------------------
-
-.affix {
-  position: fixed;
-  @include translate3d(0, 0, 0);
-}
