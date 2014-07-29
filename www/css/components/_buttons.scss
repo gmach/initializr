@@ -1,0 +1,12 @@
+%wrapper {
+  width: 90%;
+}
+
+%button {
+  border: 1px solid red;
+}
+
+.dangerbtn {
+  @extend %button;
+  color: red;
+}
