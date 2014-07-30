@@ -23,7 +23,20 @@ module.exports = function(grunt) {
                 }
             }
         },
-
+        // Metadata.
+        meta: {
+            basePath: 'www/css/',
+            srcPath: 'www/css/',
+            deployPath: 'www/css/'
+        },
+        sass: {
+            dist: {
+                files: {
+                    '<%= meta.deployPath %>main.css' : '<%= meta.deployPath %>main.scss',
+                    '<%= meta.deployPath %>digital8.css' : '<%= meta.deployPath %>digital8.scss'
+                }
+            }
+        },
         // grunt-watch will monitor the projects files
         watch: {
             all: {
@@ -32,10 +45,10 @@ module.exports = function(grunt) {
                 // or an Array of String for multiple entries
                 // You can use globing patterns like `css/**/*.css`
                 // See https://github.com/gruntjs/grunt-contrib-watch#files
-                files: ['www/*.*', 'tests/*.js', 'tests/*.html', 'src/*.js'],
-                /*
-                tasks: ['qunit']
-                */
+                files: ['<%= meta.deployPath %>/**/*.scss', 'www/*.html', 'tests/*.js', 'tests/*.html'],
+                
+                tasks: ['sass'],
+                
                 options: {
                     livereload: true
                 }
@@ -54,11 +67,13 @@ module.exports = function(grunt) {
     });
 // load up your plugins
     grunt.loadNpmTasks('grunt-contrib-qunit');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-express');
     grunt.loadNpmTasks('grunt-open');
 
-    grunt.registerTask('default', ['qunit']);
+
+    grunt.registerTask('default', ['server']);
     grunt.registerTask('server',[
         'express',
         'open',

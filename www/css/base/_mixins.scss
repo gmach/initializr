@@ -271,3 +271,20 @@
   -ms-user-select: $select; // IE10+
   user-select: $select;
 }
+
+@mixin hamburger-button($bgcolor) {
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid transparent;
+  margin: 10px;
+  .icon-bar {
+    background-color: $bgcolor;
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+    +.icon-bar {
+      margin-top: 4px;
+    }
+  }
+}
