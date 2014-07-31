@@ -1,13 +1,41 @@
 module.exports = function(grunt) {
 
-
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'), // the package file to use
-
-        qunit: {
-            all: ['tests/*.html']
+        pkg: grunt.file.readJSON('package.json'),
+        concat: {
+            options: {
+                separator: ';'
+            },
+            dist: {
+                src: ['lib/**/*.js'],
+                dest: 'dist/<%= pkg.name %>.js'
+            }
         },
-
+        uglify: {
+            options: {
+                banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+            },
+            dist: {
+                files: {
+                    'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+                }
+            }
+        },
+        jshint: {
+            files: ['Gruntfile.js', 'www/js/**/*.js', 'tests/**/*.js'],
+            options: {
+                // options here to override JSHint defaults
+                globals: {
+                    jQuery: true,
+                    console: true,
+                    module: true,
+                    document: true
+                }
+            }
+        },
+        qunit: {
+            files: ['tests/**/*.html']
+        },
         // grunt-express will serve the files from the folders listed in `bases`
         // on specified `port` and `hostname`
         express: {
@@ -21,6 +49,13 @@ module.exports = function(grunt) {
                     // http://stackoverflow.com/questions/14594121/express-res-sendfile-throwing-forbidden-error
                     livereload: true
                 }
+            }
+        },
+        // grunt-open will open your browser at the project's URL
+        open: {
+            all: {
+                // Gets the port from the connect configuration
+                path: 'http://localhost:<%= express.all.options.port%>'
             }
         },
         // Metadata.
@@ -39,41 +74,29 @@ module.exports = function(grunt) {
         },
         // grunt-watch will monitor the projects files
         watch: {
-            all: {
-                // Replace with whatever file you want to trigger the update from
-                // Either as a String for a single entry
-                // or an Array of String for multiple entries
-                // You can use globing patterns like `css/**/*.css`
-                // See https://github.com/gruntjs/grunt-contrib-watch#files
-                files: ['<%= meta.deployPath %>/**/*.scss', 'www/*.html', 'tests/*.js', 'tests/*.html'],
-                
-                tasks: ['sass'],
-                
-                options: {
-                    livereload: true
-                }
-            }
-        },
-
-        // grunt-open will open your browser at the project's URL
-        open: {
-            all: {
-                // Gets the port from the connect configuration
-                path: 'http://localhost:<%= express.all.options.port%>'
+            css: {
+                files: ['www/css/**/*.scss'],
+                tasks: ['sass']
+            },
+            js: {
+                files: ['www/js/**/*.js', 'www/tests/**/*.js'],
+                tasks: ['jshint', 'qunit']
+            },
+            options: {
+                livereload: true
             }
         }
-
-
     });
-// load up your plugins
+
+    grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-qunit');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-express');
     grunt.loadNpmTasks('grunt-open');
 
-
-    grunt.registerTask('default', ['server']);
     grunt.registerTask('server',[
         'express',
         'open',
@@ -83,4 +106,7 @@ module.exports = function(grunt) {
     grunt.registerTask('log', 'Log some stuff.', function() {
         grunt.log.write('Logging some stuff...').ok();
     });
+    grunt.registerTask('test', ['jshint', 'qunit']);
+    grunt.registerTask('build', ['jshint', 'qunit', 'concat', 'uglify']);
+    grunt.registerTask('default', ['server']);
 };
