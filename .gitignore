@@ -1,5 +1,11 @@
-.sass-cache
+.project
+.settings
+target
+.classpath
+.DS_Store
 .idea
-dist
 node_modules
 bower_components
+.sass-cache
+static/css/**
+front-end/www/css/**

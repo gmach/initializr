@@ -104,13 +104,7 @@ a {
 }
 
 .servicequadrants {
-  clear: both;
-  overflow: auto;
   background: darken($basemockcolor, 10%);
-  .col {
-    width: 100%;
-    float: left;
-  }
 }
 
 .recentlylaunched {
@@ -125,8 +119,9 @@ background: darken($basemockcolor, 20%);
 // small width
 @media only screen and (min-width: $screen-phone) {
   .servicequadrants {
-    .col {
+    .article {
       width: 50%;
+      float: left;
     }
   }
 }
@@ -155,7 +150,7 @@ background: darken($basemockcolor, 20%);
 
   }
   .servicequadrants {
-    .col {
+    .article {
       width: 25%;
     }
   }

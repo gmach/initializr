@@ -64,6 +64,7 @@ module.exports = function(grunt) {
             srcPath: 'www/css/',
             deployPath: 'www/css/'
         },
+/*
         sass: {
             dist: {
                 files: {
@@ -72,11 +73,20 @@ module.exports = function(grunt) {
                 }
             }
         },
+*/
+        compass: {
+            dist: {
+                options: {
+                    sassDir: 'www/scss',
+                    cssDir: 'www/css'
+                }
+            }
+        },
         // grunt-watch will monitor the projects files
         watch: {
-            css: {
-                files: ['www/css/**/*.scss'],
-                tasks: ['sass']
+            scss: {
+                files: ['www/scss/**/*.scss'],
+                tasks: ['compass']
             },
             js: {
                 files: ['www/js/**/*.js', 'www/tests/**/*.js'],
@@ -93,6 +103,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-express');
     grunt.loadNpmTasks('grunt-open');
